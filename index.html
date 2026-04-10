@@ -30,26 +30,16 @@
     position: relative; z-index: 1;
     max-width: 640px; margin: 0 auto; padding: 20px 16px 40px;
   }
-
-  /* 首页 */
   .page { display: none; }
   .page.active { display: block; }
-  .home-title {
-    text-align: center; padding: 60px 0 30px;
-  }
+  .home-title { text-align: center; padding: 60px 0 30px; }
   .home-title h1 {
     font-size: 32px; font-weight: 800;
     text-shadow: 0 2px 20px rgba(79,195,247,0.5);
     margin-bottom: 8px;
   }
-  .home-title .sub {
-    font-size: 15px; color: rgba(255,255,255,0.7);
-    margin-bottom: 30px;
-  }
-  .home-title .desc {
-    font-size: 14px; color: rgba(255,255,255,0.5);
-    line-height: 1.8; margin-bottom: 40px;
-  }
+  .home-title .sub { font-size: 15px; color: rgba(255,255,255,0.7); margin-bottom: 30px; }
+  .home-title .desc { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.8; margin-bottom: 40px; }
   .btn-start {
     display: block; width: 240px; margin: 0 auto;
     padding: 16px 0; border: none; border-radius: 50px;
@@ -59,153 +49,97 @@
     box-shadow: 0 4px 20px rgba(79,195,247,0.4);
   }
   .btn-start:hover { transform: scale(1.05); box-shadow: 0 6px 30px rgba(79,195,247,0.6); }
-
-  /* 进度条 */
-  .progress-bar {
-    background: rgba(255,255,255,0.15); border-radius: 10px;
-    height: 8px; margin-bottom: 24px; overflow: hidden;
-  }
-  .progress-fill {
-    height: 100%; border-radius: 10px;
-    background: linear-gradient(90deg, #4fc3f7, #81d4fa);
-    transition: width 0.4s ease;
-  }
-  .progress-text {
-    text-align: center; font-size: 13px;
-    color: rgba(255,255,255,0.6); margin-bottom: 16px;
-  }
-
-  /* 题目 */
+  .progress-bar { background: rgba(255,255,255,0.15); border-radius: 10px; height: 8px; margin-bottom: 24px; overflow: hidden; }
+  .progress-fill { height: 100%; border-radius: 10px; background: linear-gradient(90deg, #4fc3f7, #81d4fa); transition: width 0.4s ease; }
+  .progress-text { text-align: center; font-size: 13px; color: rgba(255,255,255,0.6); margin-bottom: 16px; }
   .question-card {
-    background: rgba(255,255,255,0.08);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255,255,255,0.12);
-    border-radius: 20px; padding: 28px 24px;
-    margin-bottom: 20px;
+    background: rgba(255,255,255,0.08); backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.12); border-radius: 20px; padding: 28px 24px; margin-bottom: 20px;
   }
-  .question-num {
-    font-size: 13px; color: #4fc3f7;
-    font-weight: 600; margin-bottom: 10px;
-  }
-  .question-text {
-    font-size: 18px; font-weight: 600;
-    line-height: 1.6; margin-bottom: 24px;
-  }
+  .question-num { font-size: 13px; color: #4fc3f7; font-weight: 600; margin-bottom: 10px; }
+  .question-text { font-size: 18px; font-weight: 600; line-height: 1.6; margin-bottom: 24px; }
   .options { display: flex; flex-direction: column; gap: 12px; }
   .option {
-    background: rgba(255,255,255,0.06);
-    border: 1.5px solid rgba(255,255,255,0.15);
-    border-radius: 14px; padding: 16px 18px;
-    font-size: 15px; color: #fff; cursor: pointer;
-    transition: all 0.25s; line-height: 1.5;
+    background: rgba(255,255,255,0.06); border: 1.5px solid rgba(255,255,255,0.15);
+    border-radius: 14px; padding: 16px 18px; font-size: 15px; color: #fff;
+    cursor: pointer; transition: all 0.25s; line-height: 1.5;
   }
-  .option:hover {
-    background: rgba(79,195,247,0.15);
-    border-color: rgba(79,195,247,0.4);
-  }
-  .option.selected {
-    background: rgba(79,195,247,0.25);
-    border-color: #4fc3f7;
-    box-shadow: 0 0 15px rgba(79,195,247,0.2);
-  }
+  .option:hover { background: rgba(79,195,247,0.15); border-color: rgba(79,195,247,0.4); }
+  .option.selected { background: rgba(79,195,247,0.25); border-color: #4fc3f7; box-shadow: 0 0 15px rgba(79,195,247,0.2); }
 
-  /* 结果页 */
-  .result-card {
-    text-align: center;
-    background: rgba(255,255,255,0.1);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255,255,255,0.15);
-    border-radius: 24px; padding: 40px 24px;
-    margin-top: 40px;
+  /* ===== 结果页 ===== */
+  .result-hero {
+    display: flex; gap: 16px; margin-top: 30px;
+    align-items: stretch;
   }
-  .result-label {
-    font-size: 14px; color: #4fc3f7;
-    letter-spacing: 4px; margin-bottom: 12px;
+  .avatar-card {
+    flex: 0 0 180px;
+    background: rgba(255,255,255,0.1); backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.15); border-radius: 20px;
+    padding: 20px 12px 16px; text-align: center;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
   }
-  .result-title {
-    font-size: 36px; font-weight: 800;
-    margin-bottom: 6px;
-    text-shadow: 0 2px 20px rgba(79,195,247,0.5);
+  .avatar-card .label-small { font-size: 12px; color: rgba(255,255,255,0.5); margin-bottom: 6px; }
+  .avatar-card .char-name { font-size: 20px; font-weight: 800; margin-bottom: 4px; }
+  .avatar-card .char-svg { margin: 10px 0; }
+  .avatar-card .char-quote { font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.5; }
+  .info-card {
+    flex: 1;
+    background: rgba(255,255,255,0.1); backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.15); border-radius: 20px;
+    padding: 24px 20px; display: flex; flex-direction: column; justify-content: center;
   }
-  .result-tag {
-    display: inline-block;
-    background: rgba(79,195,247,0.2);
-    border: 1px solid rgba(79,195,247,0.4);
-    border-radius: 20px; padding: 4px 16px;
-    font-size: 13px; color: #81d4fa;
-    margin: 10px 0 20px;
+  .info-card .type-label { font-size: 12px; color: rgba(255,255,255,0.5); margin-bottom: 4px; }
+  .info-card .type-name { font-size: 24px; font-weight: 800; margin-bottom: 8px; }
+  .info-card .match-badge {
+    display: inline-block; background: rgba(79,195,247,0.2); border: 1px solid rgba(79,195,247,0.4);
+    border-radius: 20px; padding: 3px 14px; font-size: 12px; color: #81d4fa; margin-bottom: 14px;
   }
-  .result-desc {
-    font-size: 15px; line-height: 1.8;
-    color: rgba(255,255,255,0.8); margin-bottom: 24px;
+  .info-card .type-tag { font-size: 13px; color: rgba(255,255,255,0.6); margin-bottom: 8px; }
+  .info-card .match-detail { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.6; }
+  .desc-card {
+    background: rgba(255,255,255,0.08); backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.12); border-radius: 20px;
+    padding: 24px; margin-top: 16px;
   }
-  .result-stats {
-    display: flex; justify-content: center; gap: 24px;
-    margin-bottom: 30px; flex-wrap: wrap;
+  .desc-card h4 { font-size: 15px; font-weight: 700; margin-bottom: 12px; }
+  .desc-card p { font-size: 14px; line-height: 2; color: rgba(255,255,255,0.75); }
+  .bars-card {
+    background: rgba(255,255,255,0.08); backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.12); border-radius: 20px;
+    padding: 24px; margin-top: 16px;
   }
-  .stat-item {
-    background: rgba(255,255,255,0.06);
-    border-radius: 12px; padding: 12px 18px;
-    min-width: 80px;
-  }
-  .stat-value { font-size: 22px; font-weight: 700; color: #4fc3f7; }
-  .stat-label { font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 4px; }
+  .bars-card h4 { font-size: 15px; font-weight: 700; margin-bottom: 16px; }
+  .bar-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; font-size: 13px; }
+  .bar-name { width: 110px; text-align: right; flex-shrink: 0; color: rgba(255,255,255,0.8); }
+  .bar-track { flex: 1; height: 10px; background: rgba(255,255,255,0.1); border-radius: 5px; overflow: hidden; }
+  .bar-value { height: 100%; border-radius: 5px; transition: width 0.8s ease; }
+  .bar-pct { width: 40px; font-size: 12px; color: rgba(255,255,255,0.5); }
+  .btn-row { text-align: center; margin-top: 24px; }
   .btn-restart {
     display: inline-block; padding: 14px 40px;
-    border: 1.5px solid rgba(79,195,247,0.5);
-    border-radius: 50px; background: transparent;
-    color: #4fc3f7; font-size: 15px; font-weight: 600;
+    border: 1.5px solid rgba(79,195,247,0.5); border-radius: 50px;
+    background: transparent; color: #4fc3f7; font-size: 15px; font-weight: 600;
     cursor: pointer; transition: all 0.3s;
   }
-  .btn-restart:hover {
-    background: rgba(79,195,247,0.15);
+  .btn-restart:hover { background: rgba(79,195,247,0.15); }
+  @media (max-width: 500px) {
+    .result-hero { flex-direction: column; }
+    .avatar-card { flex: none; }
   }
-  .sub-result {
-    margin-top: 20px; padding: 16px;
-    background: rgba(255,255,255,0.05);
-    border-radius: 14px;
-  }
-  .sub-result h4 {
-    font-size: 14px; color: rgba(255,255,255,0.5);
-    margin-bottom: 10px;
-  }
-  .bar-row {
-    display: flex; align-items: center; gap: 10px;
-    margin-bottom: 8px; font-size: 13px;
-  }
-  .bar-name { width: 110px; text-align: right; flex-shrink: 0; }
-  .bar-track {
-    flex: 1; height: 8px;
-    background: rgba(255,255,255,0.1);
-    border-radius: 4px; overflow: hidden;
-  }
-  .bar-value {
-    height: 100%; border-radius: 4px;
-    background: linear-gradient(90deg, #4fc3f7, #81d4fa);
-    transition: width 0.6s ease;
-  }
-  .bar-pct { width: 36px; font-size: 12px; color: rgba(255,255,255,0.5); }
 </style>
 </head>
 <body>
 <div class="snow"></div>
 <div class="container">
-
-  <!-- 首页 -->
   <div class="page active" id="page-home">
     <div class="home-title">
       <h1>无尽冬日</h1>
       <div class="sub">你是什么型玩家？</div>
-      <div class="desc">
-        30道灵魂拷问<br>
-        测出你在无尽冬日里的真实人格<br>
-        找到属于你的专属称号
-      </div>
+      <div class="desc">30道灵魂拷问<br>测出你在无尽冬日里的真实人格<br>找到属于你的专属称号</div>
       <button class="btn-start" onclick="startQuiz()">开始测试</button>
     </div>
   </div>
-
-  <!-- 答题页 -->
   <div class="page" id="page-quiz">
     <div class="progress-text" id="progressText">1 / 30</div>
     <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
@@ -215,390 +149,409 @@
       <div class="options" id="qOptions"></div>
     </div>
   </div>
-
-  <!-- 结果页 -->
   <div class="page" id="page-result">
-    <div class="result-card">
-      <div class="result-label">你的无尽冬日人格是</div>
-      <div class="result-title" id="rTitle"></div>
-      <div class="result-tag" id="rTag"></div>
-      <div class="result-desc" id="rDesc"></div>
-      <div class="result-stats" id="rStats"></div>
-      <div class="sub-result" id="rBars"></div>
-      <br>
+    <div class="result-hero">
+      <div class="avatar-card">
+        <div class="label-small">你的人格类型是：</div>
+        <div class="char-name" id="rName"></div>
+        <div class="char-svg" id="rAvatar"></div>
+        <div class="char-quote" id="rQuote"></div>
+      </div>
+      <div class="info-card">
+        <div class="type-label">你的主类型</div>
+        <div class="type-name" id="rTypeName"></div>
+        <div class="match-badge" id="rBadge"></div>
+        <div class="type-tag" id="rTag"></div>
+        <div class="match-detail" id="rDetail"></div>
+      </div>
+    </div>
+    <div class="desc-card">
+      <h4>该人格的简单解读</h4>
+      <p id="rDesc"></p>
+    </div>
+    <div class="bars-card">
+      <h4>你的人格维度分布</h4>
+      <div id="rBars"></div>
+    </div>
+    <div class="btn-row">
       <button class="btn-restart" onclick="restart()">重新测试</button>
     </div>
   </div>
-
 </div>
 
 <script>
 const questions = [
-  {
-    q: "你上线第一件事是？",
-    opts: [
-      { text: "看世界频道在聊什么", type: "村头情报处主任" },
-      { text: "直奔资源点开始搬砖", type: "牛马" },
-      { text: "看看附近有没有肥羊可以打", type: "战争贩子" },
-      { text: "先把田收了、建筑升了", type: "冬日陶渊明" }
-    ]
-  },
-  {
-    q: "联盟里两个人吵起来了，你会？",
-    opts: [
-      { text: "立刻下场发表高见", type: "嘴强领主" },
-      { text: "默默截图发群吃瓜", type: "村头情报处主任" },
-      { text: "试着撮合他们和好", type: "恋爱大师" },
-      { text: "关掉聊天继续干自己的", type: "冬日陶渊明" }
-    ]
-  },
-  {
-    q: "你被敌对联盟偷袭了，第一反应？",
-    opts: [
-      { text: "世界频道喊人来报仇！", type: "119调度员" },
-      { text: "无所谓，反正损失不大", type: "佛系玩家" },
-      { text: "研究对方阵容弱点打回去", type: "六边形战士" },
-      { text: "在频道疯狂输出分析为什么输了", type: "赛后诸葛亮" }
-    ]
-  },
-  {
-    q: "突然获得一大笔资源，你会？",
-    opts: [
-      { text: "全部存起来，以后再说", type: "屯屯鼠" },
-      { text: "立刻拉满战力冲一波", type: "战争贩子" },
-      { text: "分给联盟兄弟们", type: "撒币大师" },
-      { text: "先发个帖子晒一下", type: "嘴强领主" }
-    ]
-  },
-  {
-    q: "你最享受的游戏日常是？",
-    opts: [
-      { text: "种田采集搞发展", type: "冬日陶渊明" },
-      { text: "PVP打架抢地盘", type: "战争贩子" },
-      { text: "在频道聊天交朋友", type: "恋爱大师" },
-      { text: "研究数据写攻略", type: "冬日课代表" }
-    ]
-  },
-  {
-    q: "有新手问你怎么玩，你会？",
-    opts: [
-      { text: "写一篇详细攻略给他", type: "冬日课代表" },
-      { text: "让他自己摸索吧", type: "佛系玩家" },
-      { text: "讲得头头是道但实操一般", type: "赛后诸葛亮" },
-      { text: "直接拉进联盟带他飞", type: "霸总" }
-    ]
-  },
-  {
-    q: "你对氪金的态度是？",
-    opts: [
-      { text: "能白嫖绝不花一分钱", type: "白嫖生存大师" },
-      { text: "花多花少我都开心", type: "吗喽" },
-      { text: "该花就花，追求最强", type: "无尽印钞机" },
-      { text: "不光自己氪，还给兄弟送", type: "撒币大师" }
-    ]
-  },
-  {
-    q: "服务器要合服了，你第一反应？",
-    opts: [
-      { text: "新的大瓜要来了！", type: "村头情报处主任" },
-      { text: "赶紧囤资源备战", type: "屯屯鼠" },
-      { text: "研究对面大佬实力排名", type: "六边形战士" },
-      { text: "先开几个小号去侦察", type: "分身大师" }
-    ]
-  },
-  {
-    q: "联盟集结打大仗，你的状态是？",
-    opts: [
-      { text: "冲最前面，当炮灰也乐意", type: "战争贩子" },
-      { text: "在后面指挥喊话鼓舞士气", type: "赛后诸葛亮" },
-      { text: "默默跟队，心里算打完能分多少", type: "屯屯鼠" },
-      { text: "打完立刻写战报发频道", type: "冬日课代表" }
-    ]
-  },
-  {
-    q: "你理想中的游戏状态是？",
-    opts: [
-      { text: "啥也不争，佛系养老", type: "佛系玩家" },
-      { text: "全服第一，谁都打不过我", type: "六边形战士" },
-      { text: "有一群好友每天聊天就行", type: "吗喽" },
-      { text: "当联盟老大管一方天地", type: "霸总" }
-    ]
-  },
-  {
-    q: "你在联盟群里最常干的事是？",
-    opts: [
-      { text: "分享最新情报和八卦", type: "村头情报处主任" },
-      { text: "帮忙磕别人的CP", type: "恋爱大师" },
-      { text: "发资源包和红包", type: "撒币大师" },
-      { text: "安排作战计划和调度", type: "霸总" }
-    ]
-  },
-  {
-    q: "打开背包发现快满了，你会？",
-    opts: [
-      { text: "绝不扔，想办法扩容", type: "屯屯鼠" },
-      { text: "用不上的全分给盟友", type: "撒币大师" },
-      { text: "做个资源管理表格优化一下", type: "冬日课代表" },
-      { text: "我背包永远是满的，习惯了", type: "牛马" }
-    ]
-  },
-  {
-    q: "你怎么看待游戏里的社交？",
-    opts: [
-      { text: "最爱磕CP和撮合情侣", type: "恋爱大师" },
-      { text: "能聊就聊，主要是自己开心", type: "吗喽" },
-      { text: "社交是为了打架更有组织", type: "战争贩子" },
-      { text: "不太社交，自己玩自己的", type: "佛系玩家" }
-    ]
-  },
-  {
-    q: "你开小号的原因是？",
-    opts: [
-      { text: "侦察敌情、屯资源两不误", type: "分身大师" },
-      { text: "我不开小号，一个号够肝了", type: "牛马" },
-      { text: "在不同联盟认识更多人", type: "恋爱大师" },
-      { text: "什么小号？我连大号都懒得上", type: "佛系玩家" }
-    ]
-  },
-  {
-    q: "看到世界频道有人炫耀战绩，你会？",
-    opts: [
-      { text: "上去怼他，我也不差", type: "嘴强领主" },
-      { text: "截图保存等他翻车", type: "村头情报处主任" },
-      { text: "默默记住他的名字，以后打回来", type: "六边形战士" },
-      { text: "无所谓，继续种我的田", type: "冬日陶渊明" }
-    ]
-  },
-  {
-    q: "你最骄傲的游戏成就是？",
-    opts: [
-      { text: "仓库资源多到用不完", type: "屯屯鼠" },
-      { text: "PVP胜率排名前列", type: "六边形战士" },
-      { text: "认识了一群好兄弟好姐妹", type: "吗喽" },
-      { text: "带领联盟打赢关键战役", type: "霸总" }
-    ]
-  },
-  {
-    q: "你给自己的游戏风格打个标签？",
-    opts: [
-      { text: "肝帝，别人睡觉我在搬砖", type: "牛马" },
-      { text: "话多，世界频道活跃分子", type: "嘴强领主" },
-      { text: "稳健，从不亏本买卖", type: "白嫖生存大师" },
-      { text: "随缘，开心就好", type: "吗喽" }
-    ]
-  },
-  {
-    q: "联盟要求捐献资源，你的态度？",
-    opts: [
-      { text: "二话不说，直接拉满", type: "撒币大师" },
-      { text: "算算性价比再决定", type: "白嫖生存大师" },
-      { text: "当然捐，毕竟我是管理", type: "霸总" },
-      { text: "假装没看到消息", type: "佛系玩家" }
-    ]
-  },
-  {
-    q: "你在游戏里说话最多的场景是？",
-    opts: [
-      { text: "和人对线辩论的时候", type: "嘴强领主" },
-      { text: "分享情报和小道消息的时候", type: "村头情报处主任" },
-      { text: "复盘战斗分析对错的时候", type: "赛后诸葛亮" },
-      { text: "教别人玩的时候", type: "冬日课代表" }
-    ]
-  },
-  {
-    q: "你最受不了什么类型的队友？",
-    opts: [
-      { text: "光说不练的指挥官", type: "六边形战士" },
-      { text: "一声不吭的透明人", type: "嘴强领主" },
-      { text: "白嫖还嫌弃的人", type: "撒币大师" },
-      { text: "其实都行，我心态好", type: "吗喽" }
-    ]
-  },
-  {
-    q: "游戏更新了新版本，你第一时间？",
-    opts: [
-      { text: "研究更新内容写个攻略", type: "冬日课代表" },
-      { text: "看看有没有新的白嫖福利", type: "白嫖生存大师" },
-      { text: "找新BUG和漏洞", type: "分身大师" },
-      { text: "继续种田，更新跟我没关系", type: "冬日陶渊明" }
-    ]
-  },
-  {
-    q: "你在联盟里的定位是？",
-    opts: [
-      { text: "氛围担当，有我就热闹", type: "嘴强领主" },
-      { text: "后勤保障，默默贡献资源", type: "牛马" },
-      { text: "战力担当，打架靠我", type: "六边形战士" },
-      { text: "精神领袖，嘴上指挥", type: "赛后诸葛亮" }
-    ]
-  },
-  {
-    q: "睡前最后看一眼游戏，你在？",
-    opts: [
-      { text: "确认所有生产队列都排满了", type: "牛马" },
-      { text: "看看世界频道有没有新瓜", type: "村头情报处主任" },
-      { text: "检查仓库资源有没有被偷", type: "屯屯鼠" },
-      { text: "在盟友群里道晚安", type: "恋爱大师" }
-    ]
-  },
-  {
-    q: "你的好友列表里最多的是？",
-    opts: [
-      { text: "各种联盟的情报来源", type: "村头情报处主任" },
-      { text: "一起打架的战友", type: "战争贩子" },
-      { text: "磕过CP的情侣们", type: "恋爱大师" },
-      { text: "自己的一堆小号", type: "分身大师" }
-    ]
-  },
-  {
-    q: "遇到一个比你强很多的对手，你？",
-    opts: [
-      { text: "分析他的弱点准备翻盘", type: "六边形战士" },
-      { text: "嘴上先不能输", type: "赛后诸葛亮" },
-      { text: "喊全联盟来帮忙群殴", type: "119调度员" },
-      { text: "溜了溜了，打不过就跑", type: "白嫖生存大师" }
-    ]
-  },
-  {
-    q: "你怎么对待敌对联盟的人？",
-    opts: [
-      { text: "见一个打一个，绝不手软", type: "战争贩子" },
-      { text: "打听他们内部消息", type: "村头情报处主任" },
-      { text: "该外交外交，化敌为友", type: "霸总" },
-      { text: "管他什么联盟，带我种田就行", type: "冬日陶渊明" }
-    ]
-  },
-  {
-    q: "有人在频道里骂你，你？",
-    opts: [
-      { text: "直接骂回去，键盘从不认输", type: "嘴强领主" },
-      { text: "截图存证，等着看好戏", type: "村头情报处主任" },
-      { text: "无所谓，骂完他自己会累", type: "佛系玩家" },
-      { text: "约个架用实力说话", type: "战争贩子" }
-    ]
-  },
-  {
-    q: "你最想拥有的游戏超能力是？",
-    opts: [
-      { text: "无限资源，永远花不完", type: "无尽印钞机" },
-      { text: "一键收菜，自动种田", type: "冬日陶渊明" },
-      { text: "看到所有人的真实战力", type: "六边形战士" },
-      { text: "让全服都听我指挥", type: "霸总" }
-    ]
-  },
-  {
-    q: "你对游戏里结婚系统的看法？",
-    opts: [
-      { text: "太好了！我要磕遍全服CP", type: "恋爱大师" },
-      { text: "结婚有属性加成吗？有就结", type: "白嫖生存大师" },
-      { text: "我已经和仓库结婚了", type: "屯屯鼠" },
-      { text: "开心就好，凑个热闹", type: "吗喽" }
-    ]
-  },
-  {
-    q: "如果游戏要停服一天，你会？",
-    opts: [
-      { text: "终于可以休息了", type: "牛马" },
-      { text: "去论坛看看大家的反应", type: "村头情报处主任" },
-      { text: "焦虑，我的资源不能断", type: "屯屯鼠" },
-      { text: "无所谓，打开另一个游戏", type: "佛系玩家" }
-    ]
-  }
+  { q: "你上线第一件事是？", opts: [
+    { text: "看世界频道在聊什么", type: "村头情报处主任" },
+    { text: "直奔资源点开始搬砖", type: "肝神" },
+    { text: "看看附近有没有肥羊可以打", type: "战争贩子" },
+    { text: "先把田收了、建筑升了", type: "冬日陶渊明" }
+  ]},
+  { q: "联盟里两个人吵起来了，你会？", opts: [
+    { text: "立刻下场发表高见", type: "嘴强领主" },
+    { text: "默默截图发群吃瓜", type: "村头情报处主任" },
+    { text: "试着撮合他们和好", type: "恋爱大师" },
+    { text: "关掉聊天继续干自己的", type: "冬日陶渊明" }
+  ]},
+  { q: "你被敌对联盟偷袭了，第一反应？", opts: [
+    { text: "世界频道喊人来报仇！", type: "119调度员" },
+    { text: "无所谓，反正损失不大", type: "佛系玩家" },
+    { text: "研究对方阵容弱点打回去", type: "六边形战士" },
+    { text: "在频道疯狂输出分析为什么输了", type: "赛后诸葛亮" }
+  ]},
+  { q: "突然获得一大笔资源，你会？", opts: [
+    { text: "全部存起来，以后再说", type: "屯屯鼠" },
+    { text: "立刻拉满战力冲一波", type: "战争贩子" },
+    { text: "分给联盟兄弟们", type: "撒币大师" },
+    { text: "先发个帖子晒一下", type: "嘴强领主" }
+  ]},
+  { q: "你最享受的游戏日常是？", opts: [
+    { text: "种田采集搞发展", type: "冬日陶渊明" },
+    { text: "PVP打架抢地盘", type: "战争贩子" },
+    { text: "在频道聊天交朋友", type: "恋爱大师" },
+    { text: "研究数据写攻略", type: "冬日课代表" }
+  ]},
+  { q: "有新手问你怎么玩，你会？", opts: [
+    { text: "写一篇详细攻略给他", type: "冬日课代表" },
+    { text: "让他自己摸索吧", type: "佛系玩家" },
+    { text: "讲得头头是道但实操一般", type: "赛后诸葛亮" },
+    { text: "直接拉进联盟带他飞", type: "霸总" }
+  ]},
+  { q: "你对氪金的态度是？", opts: [
+    { text: "能白嫖绝不花一分钱", type: "白嫖生存大师" },
+    { text: "花多花少我都开心", type: "吗喽" },
+    { text: "该花就花，追求最强", type: "无尽印钞机" },
+    { text: "不光自己氪，还给兄弟送", type: "撒币大师" }
+  ]},
+  { q: "服务器要合服了，你第一反应？", opts: [
+    { text: "新的大瓜要来了！", type: "村头情报处主任" },
+    { text: "赶紧囤资源备战", type: "屯屯鼠" },
+    { text: "研究对面大佬实力排名", type: "六边形战士" },
+    { text: "先开几个小号去侦察", type: "分身大师" }
+  ]},
+  { q: "联盟集结打大仗，你的状态是？", opts: [
+    { text: "冲最前面，当炮灰也乐意", type: "战争贩子" },
+    { text: "在后面指挥喊话鼓舞士气", type: "赛后诸葛亮" },
+    { text: "默默跟队，心里算打完能分多少", type: "屯屯鼠" },
+    { text: "打完立刻写战报发频道", type: "冬日课代表" }
+  ]},
+  { q: "你理想中的游戏状态是？", opts: [
+    { text: "啥也不争，佛系养老", type: "佛系玩家" },
+    { text: "全服第一，谁都打不过我", type: "六边形战士" },
+    { text: "有一群好友每天聊天就行", type: "吗喽" },
+    { text: "当联盟老大管一方天地", type: "霸总" }
+  ]},
+  { q: "你在联盟群里最常干的事是？", opts: [
+    { text: "分享最新情报和八卦", type: "村头情报处主任" },
+    { text: "帮忙磕别人的CP", type: "恋爱大师" },
+    { text: "发资源包和红包", type: "撒币大师" },
+    { text: "安排作战计划和调度", type: "霸总" }
+  ]},
+  { q: "打开背包发现快满了，你会？", opts: [
+    { text: "绝不扔，想办法扩容", type: "屯屯鼠" },
+    { text: "用不上的全分给盟友", type: "撒币大师" },
+    { text: "做个资源管理表格优化一下", type: "冬日课代表" },
+    { text: "我背包永远是满的，习惯了", type: "肝神" }
+  ]},
+  { q: "你怎么看待游戏里的社交？", opts: [
+    { text: "最爱磕CP和撮合情侣", type: "恋爱大师" },
+    { text: "能聊就聊，主要是自己开心", type: "吗喽" },
+    { text: "社交是为了打架更有组织", type: "战争贩子" },
+    { text: "不太社交，自己玩自己的", type: "佛系玩家" }
+  ]},
+  { q: "你开小号的原因是？", opts: [
+    { text: "侦察敌情、屯资源两不误", type: "分身大师" },
+    { text: "我不开小号，一个号够肝了", type: "肝神" },
+    { text: "在不同联盟认识更多人", type: "恋爱大师" },
+    { text: "什么小号？我连大号都懒得上", type: "佛系玩家" }
+  ]},
+  { q: "看到世界频道有人炫耀战绩，你会？", opts: [
+    { text: "上去怼他，我也不差", type: "嘴强领主" },
+    { text: "截图保存等他翻车", type: "村头情报处主任" },
+    { text: "默默记住他的名字，以后打回来", type: "六边形战士" },
+    { text: "无所谓，继续种我的田", type: "冬日陶渊明" }
+  ]},
+  { q: "你最骄傲的游戏成就是？", opts: [
+    { text: "仓库资源多到用不完", type: "屯屯鼠" },
+    { text: "PVP胜率排名前列", type: "六边形战士" },
+    { text: "认识了一群好兄弟好姐妹", type: "吗喽" },
+    { text: "带领联盟打赢关键战役", type: "霸总" }
+  ]},
+  { q: "你给自己的游戏风格打个标签？", opts: [
+    { text: "肝帝，别人睡觉我在搬砖", type: "肝神" },
+    { text: "话多，世界频道活跃分子", type: "嘴强领主" },
+    { text: "稳健，从不亏本买卖", type: "白嫖生存大师" },
+    { text: "随缘，开心就好", type: "吗喽" }
+  ]},
+  { q: "联盟要求捐献资源，你的态度？", opts: [
+    { text: "二话不说，直接拉满", type: "撒币大师" },
+    { text: "算算性价比再决定", type: "白嫖生存大师" },
+    { text: "当然捐，毕竟我是管理", type: "霸总" },
+    { text: "假装没看到消息", type: "佛系玩家" }
+  ]},
+  { q: "你在游戏里说话最多的场景是？", opts: [
+    { text: "和人对线辩论的时候", type: "嘴强领主" },
+    { text: "分享情报和小道消息的时候", type: "村头情报处主任" },
+    { text: "复盘战斗分析对错的时候", type: "赛后诸葛亮" },
+    { text: "教别人玩的时候", type: "冬日课代表" }
+  ]},
+  { q: "你最受不了什么类型的队友？", opts: [
+    { text: "光说不练的指挥官", type: "六边形战士" },
+    { text: "一声不吭的透明人", type: "嘴强领主" },
+    { text: "白嫖还嫌弃的人", type: "撒币大师" },
+    { text: "其实都行，我心态好", type: "吗喽" }
+  ]},
+  { q: "游戏更新了新版本，你第一时间？", opts: [
+    { text: "研究更新内容写个攻略", type: "冬日课代表" },
+    { text: "看看有没有新的白嫖福利", type: "白嫖生存大师" },
+    { text: "找新BUG和漏洞", type: "分身大师" },
+    { text: "继续种田，更新跟我没关系", type: "冬日陶渊明" }
+  ]},
+  { q: "你在联盟里的定位是？", opts: [
+    { text: "氛围担当，有我就热闹", type: "嘴强领主" },
+    { text: "后勤保障，默默贡献资源", type: "肝神" },
+    { text: "战力担当，打架靠我", type: "六边形战士" },
+    { text: "精神领袖，嘴上指挥", type: "赛后诸葛亮" }
+  ]},
+  { q: "睡前最后看一眼游戏，你在？", opts: [
+    { text: "确认所有生产队列都排满了", type: "肝神" },
+    { text: "看看世界频道有没有新瓜", type: "村头情报处主任" },
+    { text: "检查仓库资源有没有被偷", type: "屯屯鼠" },
+    { text: "在盟友群里道晚安", type: "恋爱大师" }
+  ]},
+  { q: "你的好友列表里最多的是？", opts: [
+    { text: "各种联盟的情报来源", type: "村头情报处主任" },
+    { text: "一起打架的战友", type: "战争贩子" },
+    { text: "磕过CP的情侣们", type: "恋爱大师" },
+    { text: "自己的一堆小号", type: "分身大师" }
+  ]},
+  { q: "遇到一个比你强很多的对手，你？", opts: [
+    { text: "分析他的弱点准备翻盘", type: "六边形战士" },
+    { text: "嘴上先不能输", type: "赛后诸葛亮" },
+    { text: "喊全联盟来帮忙群殴", type: "119调度员" },
+    { text: "溜了溜了，打不过就跑", type: "白嫖生存大师" }
+  ]},
+  { q: "你怎么对待敌对联盟的人？", opts: [
+    { text: "见一个打一个，绝不手软", type: "战争贩子" },
+    { text: "打听他们内部消息", type: "村头情报处主任" },
+    { text: "该外交外交，化敌为友", type: "霸总" },
+    { text: "管他什么联盟，带我种田就行", type: "冬日陶渊明" }
+  ]},
+  { q: "有人在频道里骂你，你？", opts: [
+    { text: "直接骂回去，键盘从不认输", type: "嘴强领主" },
+    { text: "截图存证，等着看好戏", type: "村头情报处主任" },
+    { text: "无所谓，骂完他自己会累", type: "佛系玩家" },
+    { text: "约个架用实力说话", type: "战争贩子" }
+  ]},
+  { q: "你最想拥有的游戏超能力是？", opts: [
+    { text: "无限资源，永远花不完", type: "无尽印钞机" },
+    { text: "一键收菜，自动种田", type: "冬日陶渊明" },
+    { text: "看到所有人的真实战力", type: "六边形战士" },
+    { text: "让全服都听我指挥", type: "霸总" }
+  ]},
+  { q: "你对游戏里结婚系统的看法？", opts: [
+    { text: "太好了！我要磕遍全服CP", type: "恋爱大师" },
+    { text: "结婚有属性加成吗？有就结", type: "白嫖生存大师" },
+    { text: "我已经和仓库结婚了", type: "屯屯鼠" },
+    { text: "开心就好，凑个热闹", type: "吗喽" }
+  ]},
+  { q: "如果游戏要停服一天，你会？", opts: [
+    { text: "终于可以休息了", type: "肝神" },
+    { text: "去论坛看看大家的反应", type: "村头情报处主任" },
+    { text: "焦虑，我的资源不能断", type: "屯屯鼠" },
+    { text: "无所谓，打开另一个游戏", type: "佛系玩家" }
+  ]}
 ];
 
-// 称号详细信息
 const profiles = {
   "嘴强领主": {
-    tag: "社区 · 爱吵架",
+    tag: "社区 · 爱吵架", quote: "我的键盘，就是我的武器。",
     desc: "你的键盘就是你的武器，世界频道是你的主场。论打字速度和辩论技巧，全服没几个人是你对手。虽然有时候吵完也不记得在吵什么，但过程很快乐就够了。",
-    emoji: "🗣️"
+    color: "#FF6B6B", bodyColor: "#FFE0E0", hairColor: "#D32F2F",
+    face: "angry", accessory: "megaphone"
   },
   "村头情报处主任": {
-    tag: "社区 · 爱吃瓜",
+    tag: "社区 · 爱吃瓜", quote: "我不制造新闻，我只搬运。",
     desc: "全服的八卦你都门儿清，谁和谁闹翻了、哪个联盟要散了，你总是第一个知道。你不制造新闻，你只是新闻的搬运工——一个非常高效的搬运工。",
-    emoji: "🍉"
+    color: "#4CAF50", bodyColor: "#E8F5E9", hairColor: "#2E7D32",
+    face: "curious", accessory: "watermelon"
   },
   "恋爱大师": {
-    tag: "社区 · 爱处CP",
+    tag: "社区 · 爱处CP", quote: "末日里最温暖的，是爱情。",
     desc: "在你眼里，无尽冬日就是一个大型恋爱模拟器。你热衷于撮合盟友、磕CP、制造浪漫氛围。你坚信：末日里最温暖的不是火炉，是爱情。",
-    emoji: "💕"
+    color: "#E91E63", bodyColor: "#FCE4EC", hairColor: "#AD1457",
+    face: "love", accessory: "heart"
   },
   "战争贩子": {
-    tag: "社区 · 爱打架",
+    tag: "社区 · 爱打架", quote: "和平？不存在的。",
     desc: "和平？不存在的。你上线就是为了打架，打完大的打小的，打完敌人打野怪。你的战争日志比别人的种田日志还长。全服都知道——惹谁都别惹你。",
-    emoji: "⚔️"
+    color: "#F44336", bodyColor: "#FFCDD2", hairColor: "#B71C1C",
+    face: "fierce", accessory: "sword"
   },
   "屯屯鼠": {
-    tag: "社区 · 爱囤物资",
+    tag: "社区 · 爱囤物资", quote: "万一以后要用呢？",
     desc: "你的仓库永远是满的，你的安全感来自于那些堆成山的资源。别人问你为什么不用，你说「万一以后要用呢」。你是末日里最有准备的人。",
-    emoji: "🐿️"
+    color: "#FF9800", bodyColor: "#FFF3E0", hairColor: "#E65100",
+    face: "happy", accessory: "box"
   },
   "冬日陶渊明": {
-    tag: "社区 · 爱种田",
+    tag: "社区 · 爱种田", quote: "我的麦子熟了。",
     desc: "采菊东篱下，悠然见雪山。你在末日里开辟了一片世外桃源，种田、采集、升建筑，岁月静好与你同在。战争？什么战争？我的麦子熟了。",
-    emoji: "🌾"
+    color: "#8BC34A", bodyColor: "#F1F8E9", hairColor: "#558B2F",
+    face: "peaceful", accessory: "plant"
   },
   "撒币大师": {
-    tag: "社区 · 爱撒钱",
+    tag: "社区 · 爱撒钱", quote: "有钱还大方，这就是魅力。",
     desc: "你就是联盟里的财神爷，送资源、发红包、帮盟友升级，从不吝啬。大家都爱你，因为你用实际行动证明了：有钱，还大方，这就是顶级魅力。",
-    emoji: "💰"
+    color: "#FFC107", bodyColor: "#FFF8E1", hairColor: "#FF8F00",
+    face: "generous", accessory: "coin"
   },
-  "牛马": {
-    tag: "社区 · 爱肝",
-    desc: "你的在线时长是别人的三倍，日常任务从不遗漏，生产队列永远排满。别人在享受游戏，你在用生命诠释什么叫「勤劳致富」。牛马不是贬义，是一种生活态度。",
-    emoji: "🐂"
+  "肝神": {
+    tag: "社区 · 爱肝", quote: "肝到天亮，不是传说。",
+    desc: "你的在线时长是别人的三倍，日常任务从不遗漏，生产队列永远排满。别人在享受游戏，你在用生命诠释什么叫「勤劳致富」。肝到天亮不是传说，是你的日常。",
+    color: "#795548", bodyColor: "#EFEBE9", hairColor: "#4E342E",
+    face: "determined", accessory: "pickaxe"
   },
   "冬日课代表": {
-    tag: "社区 · 爱发教程",
+    tag: "社区 · 爱发教程", quote: "看我攻略，少走弯路。",
     desc: "你写的攻略比官方Wiki还详细，你做的数据表比策划的还专业。你乐于分享，热爱教学，是萌新们的灯塔。你可能不是最强的，但你一定是最有用的。",
-    emoji: "📚"
+    color: "#2196F3", bodyColor: "#E3F2FD", hairColor: "#1565C0",
+    face: "smart", accessory: "book"
   },
   "分身大师": {
-    tag: "社区 · 爱开小号",
+    tag: "社区 · 爱开小号", quote: "每个服务器，都有我的房产。",
     desc: "你的小号比有些人的好友还多。侦察、屯资源、多线发展，你把多开玩成了一门艺术。别人只有一个家，你在每个服务器都有房产。",
-    emoji: "🎭"
+    color: "#9C27B0", bodyColor: "#F3E5F5", hairColor: "#6A1B9A",
+    face: "sneaky", accessory: "mask"
   },
   "119调度员": {
-    tag: "社区 · 一被打就喊人",
+    tag: "社区 · 一被打就喊人", quote: "兄弟们，有人打我！",
     desc: "你的求救信号覆盖全服，响应速度比119还快。虽然有时候喊来的人比敌人还多，但这不重要——重要的是，你从不独自承受。团结就是力量，这是你的核心信仰。",
-    emoji: "🚨"
+    color: "#F44336", bodyColor: "#FFEBEE", hairColor: "#C62828",
+    face: "panic", accessory: "phone"
   },
   "佛系玩家": {
-    tag: "角色 · 什么都与我无关",
+    tag: "角色 · 什么都与我无关", quote: "我说随便，是真的随便。",
     desc: "你来无尽冬日不是为了争第一，而是为了内心的平静。被打了不生气，发育慢也不急，联盟吵架你旁观。你是冬日里最通透的人，已经提前悟道了。",
-    emoji: "🧘"
+    color: "#607D8B", bodyColor: "#ECEFF1", hairColor: "#37474F",
+    face: "zen", accessory: "tea"
   },
   "吗喽": {
-    tag: "角色 · 怎样都开心",
+    tag: "角色 · 怎样都开心", quote: "开心就好，其他不重要。",
     desc: "你是游戏里的快乐源泉。赢了开心，输了也开心，有活动开心，没活动也开心。你用实际行动告诉所有人：游戏嘛，开心最重要。你的快乐，感染了整个联盟。",
-    emoji: "🐒"
+    color: "#FF9800", bodyColor: "#FFF3E0", hairColor: "#BF360C",
+    face: "goofy", accessory: "banana"
   },
   "白嫖生存大师": {
-    tag: "角色 · 零氪玩家",
+    tag: "角色 · 零氪玩家", quote: "能白嫖，绝不花钱。",
     desc: "你是零氪界的天花板，免费资源一个不漏，付费内容绝不碰。你精打细算，把每一点免费资源的价值榨干。你证明了：不花钱，照样能在末日活得很好。",
-    emoji: "🆓"
+    color: "#009688", bodyColor: "#E0F2F1", hairColor: "#00695C",
+    face: "smug", accessory: "calculator"
   },
   "霸总": {
-    tag: "角色 · 车头",
+    tag: "角色 · 车头", quote: "听我的，准没错。",
     desc: "你天生就是当领导的料。排兵布阵、外交谈判、资源调配，你把联盟管理得井井有条。你的联盟群消息永远是最多的，因为你永远有新的计划要部署。",
-    emoji: "👑"
+    color: "#673AB7", bodyColor: "#EDE7F6", hairColor: "#4527A0",
+    face: "boss", accessory: "crown"
   },
   "无尽印钞机": {
-    tag: "角色 · 金球",
+    tag: "角色 · 金球", quote: "最强的防线，就是钱。",
     desc: "你是服务器经济的重要支柱，你的氪金量足以让策划单独给你写一封感谢信。你追求最强，也享受变强的过程。毕竟，末日里最强的防线就是——钱。",
-    emoji: "💎"
+    color: "#FFD700", bodyColor: "#FFFDE7", hairColor: "#F57F17",
+    face: "rich", accessory: "diamond"
   },
   "六边形战士": {
-    tag: "角色 · 技术玩家",
+    tag: "角色 · 技术玩家", quote: "我不是在玩游戏，是在解题。",
     desc: "操作、意识、配置、数据分析，你样样精通。你是PVP场上的噩梦，PVE里的效率王。别人还在纠结选什么，你已经算出了最优解。你不是在玩游戏，你是在解题。",
-    emoji: "⬡"
+    color: "#00BCD4", bodyColor: "#E0F7FA", hairColor: "#006064",
+    face: "cool", accessory: "hexagon"
   },
   "赛后诸葛亮": {
-    tag: "角色 · 技术不好但嘴硬",
+    tag: "角色 · 技术不好但嘴硬", quote: "如果当时这样，就赢了。",
     desc: "你的实操或许不是顶尖，但你的复盘能力绝对一流。每场战斗结束后，你总能分析出「如果当时这样就赢了」。你不是打得不行，你是时机没到。下次一定。",
-    emoji: "🪭"
+    color: "#8D6E63", bodyColor: "#EFEBE9", hairColor: "#4E342E",
+    face: "thinking", accessory: "fan"
   }
 };
+
+// SVG 角色生成器
+function generateAvatar(type) {
+  const p = profiles[type];
+  if (!p) return '';
+  const c = p.color;
+  const bc = p.bodyColor;
+  const hc = p.hairColor;
+
+  // 不同表情的眼睛和嘴巴
+  const faces = {
+    angry: { eyes: `<circle cx="72" cy="88" r="5" fill="#333"/><circle cx="108" cy="88" r="5" fill="#333"/><line x1="62" y1="78" x2="78" y2="82" stroke="#333" stroke-width="2.5" stroke-linecap="round"/><line x1="118" y1="78" x2="102" y2="82" stroke="#333" stroke-width="2.5" stroke-linecap="round"/>`, mouth: `<path d="M78 108 Q90 100 102 108" stroke="#333" stroke-width="2.5" fill="none" stroke-linecap="round"/>` },
+    curious: { eyes: `<circle cx="72" cy="86" r="6" fill="#333"/><circle cx="108" cy="86" r="6" fill="#333"/><circle cx="74" cy="84" r="2" fill="#fff"/><circle cx="110" cy="84" r="2" fill="#fff"/>`, mouth: `<circle cx="90" cy="110" rx="6" ry="5" fill="#333"/>` },
+    love: { eyes: `<path d="M64 84 L68 80 L72 84 L76 80 L80 84 L72 92Z" fill="#E91E63"/><path d="M100 84 L104 80 L108 84 L112 80 L116 84 L108 92Z" fill="#E91E63"/>`, mouth: `<path d="M80 106 Q90 116 100 106" stroke="#333" stroke-width="2.5" fill="none" stroke-linecap="round"/>` },
+    fierce: { eyes: `<circle cx="72" cy="88" r="5" fill="#333"/><circle cx="108" cy="88" r="5" fill="#333"/><line x1="60" y1="76" x2="82" y2="80" stroke="#333" stroke-width="3" stroke-linecap="round"/><line x1="120" y1="76" x2="98" y2="80" stroke="#333" stroke-width="3" stroke-linecap="round"/>`, mouth: `<path d="M76 106 L84 112 L96 112 L104 106" stroke="#333" stroke-width="2.5" fill="none" stroke-linecap="round"/>` },
+    happy: { eyes: `<path d="M64 86 Q72 78 80 86" stroke="#333" stroke-width="2.5" fill="none" stroke-linecap="round"/><path d="M100 86 Q108 78 116 86" stroke="#333" stroke-width="2.5" fill="none" stroke-linecap="round"/>`, mouth: `<path d="M76 106 Q90 120 104 106" stroke="#333" stroke-width="2.5" fill="none" stroke-linecap="round"/>` },
+    peaceful: { eyes: `<line x1="64" y1="86" x2="80" y2="86" stroke="#333" stroke-width="2.5" stroke-linecap="round"/><line x1="100" y1="86" x2="116" y2="86" stroke="#333" stroke-width="2.5" stroke-linecap="round"/>`, mouth: `<path d="M80 108 Q90 114 100 108" stroke="#333" stroke-width="2" fill="none" stroke-linecap="round"/>` },
+    generous: { eyes: `<path d="M64 86 Q72 78 80 86" stroke="#333" stroke-width="2.5" fill="none"/><path d="M100 86 Q108 78 116 86" stroke="#333" stroke-width="2.5" fill="none"/>`, mouth: `<path d="M74 104 Q90 122 106 104" stroke="#333" stroke-width="2.5" fill="none" stroke-linecap="round"/>` },
+    determined: { eyes: `<circle cx="72" cy="86" r="5" fill="#333"/><circle cx="108" cy="86" r="5" fill="#333"/><circle cx="73" cy="85" r="1.5" fill="#fff"/><circle cx="109" cy="85" r="1.5" fill="#fff"/>`, mouth: `<line x1="80" y1="110" x2="100" y2="110" stroke="#333" stroke-width="2.5" stroke-linecap="round"/>` },
+    smart: { eyes: `<rect x="60" y="80" width="24" height="16" rx="8" fill="none" stroke="#333" stroke-width="2"/><rect x="96" y="80" width="24" height="16" rx="8" fill="none" stroke="#333" stroke-width="2"/><line x1="84" y1="88" x2="96" y2="88" stroke="#333" stroke-width="1.5"/><circle cx="72" cy="88" r="3" fill="#333"/><circle cx="108" cy="88" r="3" fill="#333"/>`, mouth: `<path d="M82 108 Q90 114 98 108" stroke="#333" stroke-width="2" fill="none" stroke-linecap="round"/>` },
+    sneaky: { eyes: `<path d="M64 88 Q72 82 80 88" stroke="#333" stroke-width="2.5" fill="none"/><circle cx="108" cy="86" r="5" fill="#333"/><circle cx="110" cy="84" r="2" fill="#fff"/>`, mouth: `<path d="M82 108 Q90 114 98 108" stroke="#333" stroke-width="2" fill="none" stroke-linecap="round"/>` },
+    panic: { eyes: `<circle cx="72" cy="86" r="7" fill="#fff" stroke="#333" stroke-width="2"/><circle cx="108" cy="86" r="7" fill="#fff" stroke="#333" stroke-width="2"/><circle cx="72" cy="86" r="4" fill="#333"/><circle cx="108" cy="86" r="4" fill="#333"/>`, mouth: `<ellipse cx="90" cy="112" rx="8" ry="6" fill="#333"/>` },
+    zen: { eyes: `<line x1="64" y1="86" x2="80" y2="86" stroke="#333" stroke-width="2.5" stroke-linecap="round"/><line x1="100" y1="86" x2="116" y2="86" stroke="#333" stroke-width="2.5" stroke-linecap="round"/>`, mouth: `<path d="M82 108 Q90 112 98 108" stroke="#333" stroke-width="2" fill="none" stroke-linecap="round"/>` },
+    goofy: { eyes: `<circle cx="72" cy="86" r="6" fill="#333"/><circle cx="108" cy="86" r="6" fill="#333"/><circle cx="75" cy="83" r="3" fill="#fff"/><circle cx="111" cy="83" r="3" fill="#fff"/>`, mouth: `<path d="M72 104 Q90 126 108 104" stroke="#333" stroke-width="2.5" fill="#fff" stroke-linecap="round"/>` },
+    smug: { eyes: `<path d="M64 86 Q72 80 80 86" stroke="#333" stroke-width="2.5" fill="none"/><path d="M100 86 Q108 80 116 86" stroke="#333" stroke-width="2.5" fill="none"/>`, mouth: `<path d="M80 108 Q90 116 100 108" stroke="#333" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M100 108 L106 104" stroke="#333" stroke-width="2" fill="none" stroke-linecap="round"/>` },
+    boss: { eyes: `<circle cx="72" cy="88" r="5" fill="#333"/><circle cx="108" cy="88" r="5" fill="#333"/><line x1="62" y1="78" x2="82" y2="80" stroke="#333" stroke-width="2.5" stroke-linecap="round"/><line x1="118" y1="78" x2="98" y2="80" stroke="#333" stroke-width="2.5" stroke-linecap="round"/>`, mouth: `<path d="M78 106 Q90 118 102 106" stroke="#333" stroke-width="2.5" fill="none" stroke-linecap="round"/>` },
+    rich: { eyes: `<text x="63" y="92" font-size="18" fill="#F57F17" font-weight="bold">$</text><text x="99" y="92" font-size="18" fill="#F57F17" font-weight="bold">$</text>`, mouth: `<path d="M78 106 Q90 118 102 106" stroke="#333" stroke-width="2.5" fill="none" stroke-linecap="round"/>` },
+    cool: { eyes: `<rect x="58" y="80" width="28" height="14" rx="7" fill="#333"/><rect x="94" y="80" width="28" height="14" rx="7" fill="#333"/><line x1="86" y1="87" x2="94" y2="87" stroke="#333" stroke-width="2"/>`, mouth: `<line x1="82" y1="108" x2="98" y2="108" stroke="#333" stroke-width="2.5" stroke-linecap="round"/>` },
+    thinking: { eyes: `<circle cx="72" cy="86" r="5" fill="#333"/><circle cx="108" cy="86" r="5" fill="#333"/><path d="M62 76 Q72 72 82 76" stroke="#333" stroke-width="2" fill="none"/>`, mouth: `<path d="M82 110 Q86 106 98 110" stroke="#333" stroke-width="2" fill="none" stroke-linecap="round"/>` }
+  };
+
+  // 不同道具
+  const accessories = {
+    megaphone: `<g transform="translate(126,70) rotate(20)"><rect x="0" y="0" width="8" height="20" rx="2" fill="#888"/><path d="M8 -4 L24 -12 L24 24 L8 16Z" fill="${c}" opacity="0.8"/></g>`,
+    watermelon: `<g transform="translate(120,100)"><ellipse cx="12" cy="10" rx="14" ry="12" fill="#4CAF50"/><ellipse cx="12" cy="10" rx="11" ry="9" fill="#F44336"/><circle cx="8" cy="8" r="1.5" fill="#333"/><circle cx="14" cy="12" r="1.5" fill="#333"/><circle cx="10" cy="14" r="1.5" fill="#333"/></g>`,
+    heart: `<g transform="translate(118,58)"><path d="M12 8 L16 4 L20 8 L24 4 L28 8 L20 18Z" fill="#E91E63"/></g><g transform="translate(40,56)"><path d="M8 6 L11 3 L14 6 L17 3 L20 6 L14 14Z" fill="#E91E63" opacity="0.5"/></g>`,
+    sword: `<g transform="translate(130,50)"><rect x="2" y="0" width="4" height="36" rx="1" fill="#9E9E9E"/><rect x="-2" y="34" width="12" height="5" rx="2" fill="${c}"/><rect x="1" y="39" width="6" height="10" rx="1" fill="#795548"/><polygon points="4,0 0,-8 8,-8" fill="#BDBDBD"/></g>`,
+    box: `<g transform="translate(120,96)"><rect x="0" y="4" width="28" height="22" rx="3" fill="${c}" opacity="0.8"/><rect x="-2" y="0" width="32" height="8" rx="3" fill="${c}"/><line x1="14" y1="0" x2="14" y2="26" stroke="#fff" stroke-width="1.5" opacity="0.5"/></g>`,
+    plant: `<g transform="translate(120,90)"><rect x="6" y="14" width="16" height="18" rx="2" fill="#795548"/><line x1="14" y1="14" x2="14" y2="-2" stroke="#4CAF50" stroke-width="2.5"/><circle cx="14" cy="-4" r="6" fill="#66BB6A"/><circle cx="6" cy="2" r="5" fill="#81C784"/><circle cx="22" cy="4" r="4" fill="#A5D6A7"/></g>`,
+    coin: `<g transform="translate(124,60)"><circle cx="10" cy="10" r="10" fill="#FFD700" stroke="#FFA000" stroke-width="2"/><text x="5" y="15" font-size="14" fill="#F57F17" font-weight="bold">$</text></g><g transform="translate(42,70)"><circle cx="6" cy="6" r="6" fill="#FFD700" opacity="0.5"/></g>`,
+    pickaxe: `<g transform="translate(126,60)"><line x1="4" y1="4" x2="24" y2="34" stroke="#795548" stroke-width="3.5" stroke-linecap="round"/><path d="M0 0 L12 4 L8 12Z" fill="#9E9E9E"/></g>`,
+    book: `<g transform="translate(120,95)"><rect x="0" y="0" width="24" height="30" rx="2" fill="${c}"/><rect x="3" y="3" width="18" height="24" rx="1" fill="#fff" opacity="0.3"/><line x1="12" y1="3" x2="12" y2="27" stroke="#fff" stroke-width="1" opacity="0.5"/></g>`,
+    mask: `<g transform="translate(126,70)"><ellipse cx="12" cy="14" rx="12" ry="14" fill="#CE93D8"/><circle cx="7" cy="10" r="3" fill="#333"/><circle cx="17" cy="10" r="3" fill="#333"/><path d="M8 20 Q12 24 16 20" stroke="#333" stroke-width="1.5" fill="none"/></g>`,
+    phone: `<g transform="translate(126,76)"><rect x="0" y="0" width="18" height="30" rx="3" fill="#333"/><rect x="2" y="4" width="14" height="20" rx="1" fill="#4FC3F7"/><text x="3" y="16" font-size="8" fill="#fff">SOS</text></g>`,
+    tea: `<g transform="translate(122,98)"><ellipse cx="12" cy="16" rx="12" ry="10" fill="#fff" opacity="0.3"/><rect x="2" y="6" width="20" height="16" rx="4" fill="#ECEFF1"/><path d="M22 10 Q30 12 28 18 Q26 22 22 20" stroke="#ECEFF1" stroke-width="2.5" fill="none"/><path d="M8 4 Q10 -2 12 4" stroke="#90A4AE" stroke-width="1.5" fill="none" opacity="0.6"/><path d="M14 2 Q16 -4 18 2" stroke="#90A4AE" stroke-width="1.5" fill="none" opacity="0.6"/></g>`,
+    banana: `<g transform="translate(124,86)"><path d="M4 24 Q-2 10 8 2 Q14 -2 18 4 Q12 12 8 24Z" fill="#FFD54F" stroke="#FFC107" stroke-width="1"/></g>`,
+    calculator: `<g transform="translate(124,92)"><rect x="0" y="0" width="22" height="28" rx="3" fill="#4DB6AC"/><rect x="3" y="3" width="16" height="8" rx="1" fill="#B2DFDB"/><circle cx="7" cy="16" r="2" fill="#fff" opacity="0.5"/><circle cx="15" cy="16" r="2" fill="#fff" opacity="0.5"/><circle cx="7" cy="22" r="2" fill="#fff" opacity="0.5"/><circle cx="15" cy="22" r="2" fill="#fff" opacity="0.5"/></g>`,
+    crown: `<g transform="translate(62,36)"><polygon points="28,0 32,14 24,8 20,16 16,6 8,14 0,0 4,18 24,18 28,18 32,18" fill="#FFD700" stroke="#FFA000" stroke-width="1"/><circle cx="4" cy="2" r="3" fill="#E91E63"/><circle cx="16" cy="6" r="3" fill="#2196F3"/><circle cx="28" cy="2" r="3" fill="#4CAF50"/></g>`,
+    diamond: `<g transform="translate(118,60)"><polygon points="16,0 28,10 16,30 4,10" fill="#4FC3F7" opacity="0.8"/><polygon points="16,0 28,10 16,12 4,10" fill="#81D4FA"/><line x1="16" y1="0" x2="16" y2="30" stroke="#fff" stroke-width="0.5" opacity="0.5"/></g>`,
+    hexagon: `<g transform="translate(120,62)"><polygon points="14,0 26,8 26,22 14,30 2,22 2,8" fill="none" stroke="${c}" stroke-width="2.5"/><polygon points="14,6 22,11 22,21 14,26 6,21 6,11" fill="${c}" opacity="0.3"/></g>`,
+    fan: `<g transform="translate(122,76)"><path d="M12 30 L14 30 L14 8 L12 8Z" fill="#8D6E63"/><path d="M2 8 Q8 -6 14 8" fill="#D7CCC8" stroke="#BCAAA4" stroke-width="1"/><path d="M14 8 Q20 -6 26 8" fill="#EFEBE9" stroke="#BCAAA4" stroke-width="1"/></g>`
+  };
+
+  const f = faces[p.face] || faces.happy;
+  const acc = accessories[p.accessory] || '';
+
+  return `<svg width="150" height="200" viewBox="0 0 180 220" xmlns="http://www.w3.org/2000/svg">
+    <!-- 身体 -->
+    <ellipse cx="90" cy="195" rx="40" ry="24" fill="${bc}" opacity="0.9"/>
+    <rect x="60" y="140" width="60" height="56" rx="20" fill="${bc}"/>
+    <!-- 围巾 -->
+    <path d="M60 142 Q90 156 120 142 Q120 152 90 160 Q60 152 60 142Z" fill="${c}" opacity="0.85"/>
+    <rect x="84" y="152" width="10" height="24" rx="4" fill="${c}" opacity="0.85"/>
+    <!-- 头 -->
+    <circle cx="90" cy="80" r="48" fill="${bc}"/>
+    <!-- 头发 -->
+    <ellipse cx="90" cy="52" rx="44" ry="22" fill="${hc}"/>
+    <ellipse cx="56" cy="64" rx="12" ry="18" fill="${hc}"/>
+    <ellipse cx="124" cy="64" rx="12" ry="18" fill="${hc}"/>
+    <!-- 腮红 -->
+    <ellipse cx="58" cy="100" rx="10" ry="6" fill="${c}" opacity="0.2"/>
+    <ellipse cx="122" cy="100" rx="10" ry="6" fill="${c}" opacity="0.2"/>
+    <!-- 表情 -->
+    ${f.eyes}
+    ${f.mouth}
+    <!-- 道具 -->
+    ${acc}
+  </svg>`;
+}
 
 let current = 0;
 let scores = {};
@@ -621,10 +574,8 @@ function renderQuestion() {
   document.getElementById('qText').textContent = q.q;
   document.getElementById('progressText').textContent = `${current + 1} / ${questions.length}`;
   document.getElementById('progressFill').style.width = `${((current) / questions.length) * 100}%`;
-
   const optDiv = document.getElementById('qOptions');
   optDiv.innerHTML = '';
-  // 随机打乱选项顺序
   const shuffled = [...q.opts].sort(() => Math.random() - 0.5);
   shuffled.forEach(opt => {
     const el = document.createElement('div');
@@ -636,64 +587,50 @@ function renderQuestion() {
 }
 
 function selectOption(type, el) {
-  // 防止重复点击
   if (el.classList.contains('selected')) return;
   document.querySelectorAll('.option').forEach(o => o.style.pointerEvents = 'none');
   el.classList.add('selected');
-
   scores[type] = (scores[type] || 0) + 1;
-
   setTimeout(() => {
     current++;
-    if (current < questions.length) {
-      renderQuestion();
-    } else {
-      showResult();
-    }
+    if (current < questions.length) renderQuestion();
+    else showResult();
   }, 400);
 }
 
 function showResult() {
   document.getElementById('progressFill').style.width = '100%';
-
-  // 计算结果
   const sorted = Object.entries(scores).sort((a, b) => b[1] - a[1]);
-  const top = sorted[0];
-  const topType = top[0];
-  const topCount = top[1];
+  const topType = sorted[0][0];
+  const topCount = sorted[0][1];
   const pct = Math.round((topCount / questions.length) * 100);
+  const profile = profiles[topType];
 
-  const profile = profiles[topType] || { tag: "未知", desc: "你是一个神秘的玩家。", emoji: "❓" };
+  // 头像卡片
+  document.getElementById('rName').textContent = topType;
+  document.getElementById('rAvatar').innerHTML = generateAvatar(topType);
+  document.getElementById('rQuote').textContent = profile.quote;
 
-  document.getElementById('rTitle').textContent = `${profile.emoji} ${topType}`;
+  // 信息卡片
+  document.getElementById('rTypeName').textContent = topType;
+  document.getElementById('rBadge').textContent = `匹配度 ${pct}% · 命中 ${topCount}/${questions.length} 题`;
   document.getElementById('rTag').textContent = profile.tag;
+  document.getElementById('rDetail').textContent = `维度命中较高，当前结果可视为你的第一人格画像。`;
+
+  // 解读
   document.getElementById('rDesc').textContent = profile.desc;
 
-  // 统计数字
-  document.getElementById('rStats').innerHTML = `
-    <div class="stat-item">
-      <div class="stat-value">${pct}%</div>
-      <div class="stat-label">匹配度</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-value">${topCount}/${questions.length}</div>
-      <div class="stat-label">命中题数</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-value">${sorted.length}</div>
-      <div class="stat-label">涉及人格</div>
-    </div>
-  `;
-
-  // 前5名柱状图
-  const barsHtml = ['<h4>你的人格分布 TOP 5</h4>'];
-  sorted.slice(0, 5).forEach(([name, count]) => {
-    const p = Math.round((count / questions.length) * 100);
+  // 柱状图 - 彩色
+  const barColors = ['#4fc3f7','#81d4fa','#b3e5fc','#e1f5fe','#e0e0e0'];
+  const barsHtml = [];
+  sorted.slice(0, 5).forEach(([name, count], i) => {
+    const p2 = Math.round((count / questions.length) * 100);
+    const bc2 = barColors[i] || barColors[4];
     barsHtml.push(`
       <div class="bar-row">
         <span class="bar-name">${name}</span>
-        <div class="bar-track"><div class="bar-value" style="width:${p}%"></div></div>
-        <span class="bar-pct">${p}%</span>
+        <div class="bar-track"><div class="bar-value" style="width:${p2}%;background:${bc2}"></div></div>
+        <span class="bar-pct">${p2}%</span>
       </div>
     `);
   });
