@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>无尽冬日 · 你是什么型玩家？</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background: linear-gradient(135deg, #0c1445 0%, #1a237e 30%, #1565c0 60%, #4fc3f7 100%);
+    min-height: 100vh;
+    color: #fff;
+    overflow-x: hidden;
+  }
+  .snow {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none; z-index: 0;
+    background-image:
+      radial-gradient(2px 2px at 20px 30px, #fff, transparent),
+      radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
+      radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+      radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.6), transparent),
+      radial-gradient(2px 2px at 160px 30px, #fff, transparent);
+    background-size: 200px 200px;
+    animation: snow 8s linear infinite;
+  }
+  @keyframes snow { to { background-position: 0 400px; } }
+  .container {
+    position: relative; z-index: 1;
+    max-width: 640px; margin: 0 auto; padding: 20px 16px 40px;
+  }
+
+  /* 首页 */
+  .page { display: none; }
+  .page.active { display: block; }
+  .home-title {
+    text-align: center; padding: 60px 0 30px;
+  }
+  .home-title h1 {
+    font-size: 32px; font-weight: 800;
+    text-shadow: 0 2px 20px rgba(79,195,247,0.5);
+    margin-bottom: 8px;
+  }
+  .home-title .sub {
+    font-size: 15px; color: rgba(255,255,255,0.7);
+    margin-bottom: 30px;
+  }
+  .home-title .desc {
+    font-size: 14px; color: rgba(255,255,255,0.5);
+    line-height: 1.8; margin-bottom: 40px;
+  }
+  .btn-start {
+    display: block; width: 240px; margin: 0 auto;
+    padding: 16px 0; border: none; border-radius: 50px;
+    background: linear-gradient(135deg, #4fc3f7, #1565c0);
+    color: #fff; font-size: 18px; font-weight: 700;
+    cursor: pointer; transition: all 0.3s;
+    box-shadow: 0 4px 20px rgba(79,195,247,0.4);
+  }
+  .btn-start:hover { transform: scale(1.05); box-shadow: 0 6px 30px rgba(79,195,247,0.6); }
+
+  /* 进度条 */
+  .progress-bar {
+    background: rgba(255,255,255,0.15); border-radius: 10px;
+    height: 8px; margin-bottom: 24px; overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%; border-radius: 10px;
+    background: linear-gradient(90deg, #4fc3f7, #81d4fa);
+    transition: width 0.4s ease;
+  }
+  .progress-text {
+    text-align: center; font-size: 13px;
+    color: rgba(255,255,255,0.6); margin-bottom: 16px;
+  }
+
+  /* 题目 */
+  .question-card {
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 20px; padding: 28px 24px;
+    margin-bottom: 20px;
+  }
+  .question-num {
+    font-size: 13px; color: #4fc3f7;
+    font-weight: 600; margin-bottom: 10px;
+  }
+  .question-text {
+    font-size: 18px; font-weight: 600;
+    line-height: 1.6; margin-bottom: 24px;
+  }
+  .options { display: flex; flex-direction: column; gap: 12px; }
+  .option {
+    background: rgba(255,255,255,0.06);
+    border: 1.5px solid rgba(255,255,255,0.15);
+    border-radius: 14px; padding: 16px 18px;
+    font-size: 15px; color: #fff; cursor: pointer;
+    transition: all 0.25s; line-height: 1.5;
+  }
+  .option:hover {
+    background: rgba(79,195,247,0.15);
+    border-color: rgba(79,195,247,0.4);
+  }
+  .option.selected {
+    background: rgba(79,195,247,0.25);
+    border-color: #4fc3f7;
+    box-shadow: 0 0 15px rgba(79,195,247,0.2);
+  }
+
+  /* 结果页 */
+  .result-card {
+    text-align: center;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 24px; padding: 40px 24px;
+    margin-top: 40px;
+  }
+  .result-label {
+    font-size: 14px; color: #4fc3f7;
+    letter-spacing: 4px; margin-bottom: 12px;
+  }
+  .result-title {
+    font-size: 36px; font-weight: 800;
+    margin-bottom: 6px;
+    text-shadow: 0 2px 20px rgba(79,195,247,0.5);
+  }
+  .result-tag {
+    display: inline-block;
+    background: rgba(79,195,247,0.2);
+    border: 1px solid rgba(79,195,247,0.4);
+    border-radius: 20px; padding: 4px 16px;
+    font-size: 13px; color: #81d4fa;
+    margin: 10px 0 20px;
+  }
+  .result-desc {
+    font-size: 15px; line-height: 1.8;
+    color: rgba(255,255,255,0.8); margin-bottom: 24px;
+  }
+  .result-stats {
+    display: flex; justify-content: center; gap: 24px;
+    margin-bottom: 30px; flex-wrap: wrap;
+  }
+  .stat-item {
+    background: rgba(255,255,255,0.06);
+    border-radius: 12px; padding: 12px 18px;
+    min-width: 80px;
+  }
+  .stat-value { font-size: 22px; font-weight: 700; color: #4fc3f7; }
+  .stat-label { font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 4px; }
+  .btn-restart {
+    display: inline-block; padding: 14px 40px;
+    border: 1.5px solid rgba(79,195,247,0.5);
+    border-radius: 50px; background: transparent;
+    color: #4fc3f7; font-size: 15px; font-weight: 600;
+    cursor: pointer; transition: all 0.3s;
+  }
+  .btn-restart:hover {
+    background: rgba(79,195,247,0.15);
+  }
+  .sub-result {
+    margin-top: 20px; padding: 16px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 14px;
+  }
+  .sub-result h4 {
+    font-size: 14px; color: rgba(255,255,255,0.5);
+    margin-bottom: 10px;
+  }
+  .bar-row {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 8px; font-size: 13px;
+  }
+  .bar-name { width: 110px; text-align: right; flex-shrink: 0; }
+  .bar-track {
+    flex: 1; height: 8px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 4px; overflow: hidden;
+  }
+  .bar-value {
+    height: 100%; border-radius: 4px;
+    background: linear-gradient(90deg, #4fc3f7, #81d4fa);
+    transition: width 0.6s ease;
+  }
+  .bar-pct { width: 36px; font-size: 12px; color: rgba(255,255,255,0.5); }
+</style>
+</head>
+<body>
+<div class="snow"></div>
+<div class="container">
+
+  <!-- 首页 -->
+  <div class="page active" id="page-home">
+    <div class="home-title">
+      <h1>无尽冬日</h1>
+      <div class="sub">你是什么型玩家？</div>
+      <div class="desc">
+        30道灵魂拷问<br>
+        测出你在无尽冬日里的真实人格<br>
+        找到属于你的专属称号
+      </div>
+      <button class="btn-start" onclick="startQuiz()">开始测试</button>
+    </div>
+  </div>
+
+  <!-- 答题页 -->
+  <div class="page" id="page-quiz">
+    <div class="progress-text" id="progressText">1 / 30</div>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+    <div class="question-card">
+      <div class="question-num" id="qNum">Q1</div>
+      <div class="question-text" id="qText"></div>
+      <div class="options" id="qOptions"></div>
+    </div>
+  </div>
+
+  <!-- 结果页 -->
+  <div class="page" id="page-result">
+    <div class="result-card">
+      <div class="result-label">你的无尽冬日人格是</div>
+      <div class="result-title" id="rTitle"></div>
+      <div class="result-tag" id="rTag"></div>
+      <div class="result-desc" id="rDesc"></div>
+      <div class="result-stats" id="rStats"></div>
+      <div class="sub-result" id="rBars"></div>
+      <br>
+      <button class="btn-restart" onclick="restart()">重新测试</button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const questions = [
+  {
+    q: "你上线第一件事是？",
+    opts: [
+      { text: "看世界频道在聊什么", type: "村头情报处主任" },
+      { text: "直奔资源点开始搬砖", type: "牛马" },
+      { text: "看看附近有没有肥羊可以打", type: "战争贩子" },
+      { text: "先把田收了、建筑升了", type: "冬日陶渊明" }
+    ]
+  },
+  {
+    q: "联盟里两个人吵起来了，你会？",
+    opts: [
+      { text: "立刻下场发表高见", type: "嘴强领主" },
+      { text: "默默截图发群吃瓜", type: "村头情报处主任" },
+      { text: "试着撮合他们和好", type: "恋爱大师" },
+      { text: "关掉聊天继续干自己的", type: "冬日陶渊明" }
+    ]
+  },
+  {
+    q: "你被敌对联盟偷袭了，第一反应？",
+    opts: [
+      { text: "世界频道喊人来报仇！", type: "119调度员" },
+      { text: "无所谓，反正损失不大", type: "佛系玩家" },
+      { text: "研究对方阵容弱点打回去", type: "六边形战士" },
+      { text: "在频道疯狂输出分析为什么输了", type: "赛后诸葛亮" }
+    ]
+  },
+  {
+    q: "突然获得一大笔资源，你会？",
+    opts: [
+      { text: "全部存起来，以后再说", type: "屯屯鼠" },
+      { text: "立刻拉满战力冲一波", type: "战争贩子" },
+      { text: "分给联盟兄弟们", type: "撒币大师" },
+      { text: "先发个帖子晒一下", type: "嘴强领主" }
+    ]
+  },
+  {
+    q: "你最享受的游戏日常是？",
+    opts: [
+      { text: "种田采集搞发展", type: "冬日陶渊明" },
+      { text: "PVP打架抢地盘", type: "战争贩子" },
+      { text: "在频道聊天交朋友", type: "恋爱大师" },
+      { text: "研究数据写攻略", type: "冬日课代表" }
+    ]
+  },
+  {
+    q: "有新手问你怎么玩，你会？",
+    opts: [
+      { text: "写一篇详细攻略给他", type: "冬日课代表" },
+      { text: "让他自己摸索吧", type: "佛系玩家" },
+      { text: "讲得头头是道但实操一般", type: "赛后诸葛亮" },
+      { text: "直接拉进联盟带他飞", type: "霸总" }
+    ]
+  },
+  {
+    q: "你对氪金的态度是？",
+    opts: [
+      { text: "能白嫖绝不花一分钱", type: "白嫖生存大师" },
+      { text: "花多花少我都开心", type: "吗喽" },
+      { text: "该花就花，追求最强", type: "无尽印钞机" },
+      { text: "不光自己氪，还给兄弟送", type: "撒币大师" }
+    ]
+  },
+  {
+    q: "服务器要合服了，你第一反应？",
+    opts: [
+      { text: "新的大瓜要来了！", type: "村头情报处主任" },
+      { text: "赶紧囤资源备战", type: "屯屯鼠" },
+      { text: "研究对面大佬实力排名", type: "六边形战士" },
+      { text: "先开几个小号去侦察", type: "分身大师" }
+    ]
+  },
+  {
+    q: "联盟集结打大仗，你的状态是？",
+    opts: [
+      { text: "冲最前面，当炮灰也乐意", type: "战争贩子" },
+      { text: "在后面指挥喊话鼓舞士气", type: "赛后诸葛亮" },
+      { text: "默默跟队，心里算打完能分多少", type: "屯屯鼠" },
+      { text: "打完立刻写战报发频道", type: "冬日课代表" }
+    ]
+  },
+  {
+    q: "你理想中的游戏状态是？",
+    opts: [
+      { text: "啥也不争，佛系养老", type: "佛系玩家" },
+      { text: "全服第一，谁都打不过我", type: "六边形战士" },
+      { text: "有一群好友每天聊天就行", type: "吗喽" },
+      { text: "当联盟老大管一方天地", type: "霸总" }
+    ]
+  },
+  {
+    q: "你在联盟群里最常干的事是？",
+    opts: [
+      { text: "分享最新情报和八卦", type: "村头情报处主任" },
+      { text: "帮忙磕别人的CP", type: "恋爱大师" },
+      { text: "发资源包和红包", type: "撒币大师" },
+      { text: "安排作战计划和调度", type: "霸总" }
+    ]
+  },
+  {
+    q: "打开背包发现快满了，你会？",
+    opts: [
+      { text: "绝不扔，想办法扩容", type: "屯屯鼠" },
+      { text: "用不上的全分给盟友", type: "撒币大师" },
+      { text: "做个资源管理表格优化一下", type: "冬日课代表" },
+      { text: "我背包永远是满的，习惯了", type: "牛马" }
+    ]
+  },
+  {
+    q: "你怎么看待游戏里的社交？",
+    opts: [
+      { text: "最爱磕CP和撮合情侣", type: "恋爱大师" },
+      { text: "能聊就聊，主要是自己开心", type: "吗喽" },
+      { text: "社交是为了打架更有组织", type: "战争贩子" },
+      { text: "不太社交，自己玩自己的", type: "佛系玩家" }
+    ]
+  },
+  {
+    q: "你开小号的原因是？",
+    opts: [
+      { text: "侦察敌情、屯资源两不误", type: "分身大师" },
+      { text: "我不开小号，一个号够肝了", type: "牛马" },
+      { text: "在不同联盟认识更多人", type: "恋爱大师" },
+      { text: "什么小号？我连大号都懒得上", type: "佛系玩家" }
+    ]
+  },
+  {
+    q: "看到世界频道有人炫耀战绩，你会？",
+    opts: [
+      { text: "上去怼他，我也不差", type: "嘴强领主" },
+      { text: "截图保存等他翻车", type: "村头情报处主任" },
+      { text: "默默记住他的名字，以后打回来", type: "六边形战士" },
+      { text: "无所谓，继续种我的田", type: "冬日陶渊明" }
+    ]
+  },
+  {
+    q: "你最骄傲的游戏成就是？",
+    opts: [
+      { text: "仓库资源多到用不完", type: "屯屯鼠" },
+      { text: "PVP胜率排名前列", type: "六边形战士" },
+      { text: "认识了一群好兄弟好姐妹", type: "吗喽" },
+      { text: "带领联盟打赢关键战役", type: "霸总" }
+    ]
+  },
+  {
+    q: "你给自己的游戏风格打个标签？",
+    opts: [
+      { text: "肝帝，别人睡觉我在搬砖", type: "牛马" },
+      { text: "话多，世界频道活跃分子", type: "嘴强领主" },
+      { text: "稳健，从不亏本买卖", type: "白嫖生存大师" },
+      { text: "随缘，开心就好", type: "吗喽" }
+    ]
+  },
+  {
+    q: "联盟要求捐献资源，你的态度？",
+    opts: [
+      { text: "二话不说，直接拉满", type: "撒币大师" },
+      { text: "算算性价比再决定", type: "白嫖生存大师" },
+      { text: "当然捐，毕竟我是管理", type: "霸总" },
+      { text: "假装没看到消息", type: "佛系玩家" }
+    ]
+  },
+  {
+    q: "你在游戏里说话最多的场景是？",
+    opts: [
+      { text: "和人对线辩论的时候", type: "嘴强领主" },
+      { text: "分享情报和小道消息的时候", type: "村头情报处主任" },
+      { text: "复盘战斗分析对错的时候", type: "赛后诸葛亮" },
+      { text: "教别人玩的时候", type: "冬日课代表" }
+    ]
+  },
+  {
+    q: "你最受不了什么类型的队友？",
+    opts: [
+      { text: "光说不练的指挥官", type: "六边形战士" },
+      { text: "一声不吭的透明人", type: "嘴强领主" },
+      { text: "白嫖还嫌弃的人", type: "撒币大师" },
+      { text: "其实都行，我心态好", type: "吗喽" }
+    ]
+  },
+  {
+    q: "游戏更新了新版本，你第一时间？",
+    opts: [
+      { text: "研究更新内容写个攻略", type: "冬日课代表" },
+      { text: "看看有没有新的白嫖福利", type: "白嫖生存大师" },
+      { text: "找新BUG和漏洞", type: "分身大师" },
+      { text: "继续种田，更新跟我没关系", type: "冬日陶渊明" }
+    ]
+  },
+  {
+    q: "你在联盟里的定位是？",
+    opts: [
+      { text: "氛围担当，有我就热闹", type: "嘴强领主" },
+      { text: "后勤保障，默默贡献资源", type: "牛马" },
+      { text: "战力担当，打架靠我", type: "六边形战士" },
+      { text: "精神领袖，嘴上指挥", type: "赛后诸葛亮" }
+    ]
+  },
+  {
+    q: "睡前最后看一眼游戏，你在？",
+    opts: [
+      { text: "确认所有生产队列都排满了", type: "牛马" },
+      { text: "看看世界频道有没有新瓜", type: "村头情报处主任" },
+      { text: "检查仓库资源有没有被偷", type: "屯屯鼠" },
+      { text: "在盟友群里道晚安", type: "恋爱大师" }
+    ]
+  },
+  {
+    q: "你的好友列表里最多的是？",
+    opts: [
+      { text: "各种联盟的情报来源", type: "村头情报处主任" },
+      { text: "一起打架的战友", type: "战争贩子" },
+      { text: "磕过CP的情侣们", type: "恋爱大师" },
+      { text: "自己的一堆小号", type: "分身大师" }
+    ]
+  },
+  {
+    q: "遇到一个比你强很多的对手，你？",
+    opts: [
+      { text: "分析他的弱点准备翻盘", type: "六边形战士" },
+      { text: "嘴上先不能输", type: "赛后诸葛亮" },
+      { text: "喊全联盟来帮忙群殴", type: "119调度员" },
+      { text: "溜了溜了，打不过就跑", type: "白嫖生存大师" }
+    ]
+  },
+  {
+    q: "你怎么对待敌对联盟的人？",
+    opts: [
+      { text: "见一个打一个，绝不手软", type: "战争贩子" },
+      { text: "打听他们内部消息", type: "村头情报处主任" },
+      { text: "该外交外交，化敌为友", type: "霸总" },
+      { text: "管他什么联盟，带我种田就行", type: "冬日陶渊明" }
+    ]
+  },
+  {
+    q: "有人在频道里骂你，你？",
+    opts: [
+      { text: "直接骂回去，键盘从不认输", type: "嘴强领主" },
+      { text: "截图存证，等着看好戏", type: "村头情报处主任" },
+      { text: "无所谓，骂完他自己会累", type: "佛系玩家" },
+      { text: "约个架用实力说话", type: "战争贩子" }
+    ]
+  },
+  {
+    q: "你最想拥有的游戏超能力是？",
+    opts: [
+      { text: "无限资源，永远花不完", type: "无尽印钞机" },
+      { text: "一键收菜，自动种田", type: "冬日陶渊明" },
+      { text: "看到所有人的真实战力", type: "六边形战士" },
+      { text: "让全服都听我指挥", type: "霸总" }
+    ]
+  },
+  {
+    q: "你对游戏里结婚系统的看法？",
+    opts: [
+      { text: "太好了！我要磕遍全服CP", type: "恋爱大师" },
+      { text: "结婚有属性加成吗？有就结", type: "白嫖生存大师" },
+      { text: "我已经和仓库结婚了", type: "屯屯鼠" },
+      { text: "开心就好，凑个热闹", type: "吗喽" }
+    ]
+  },
+  {
+    q: "如果游戏要停服一天，你会？",
+    opts: [
+      { text: "终于可以休息了", type: "牛马" },
+      { text: "去论坛看看大家的反应", type: "村头情报处主任" },
+      { text: "焦虑，我的资源不能断", type: "屯屯鼠" },
+      { text: "无所谓，打开另一个游戏", type: "佛系玩家" }
+    ]
+  }
+];
+
+// 称号详细信息
+const profiles = {
+  "嘴强领主": {
+    tag: "社区 · 爱吵架",
+    desc: "你的键盘就是你的武器，世界频道是你的主场。论打字速度和辩论技巧，全服没几个人是你对手。虽然有时候吵完也不记得在吵什么，但过程很快乐就够了。",
+    emoji: "🗣️"
+  },
+  "村头情报处主任": {
+    tag: "社区 · 爱吃瓜",
+    desc: "全服的八卦你都门儿清，谁和谁闹翻了、哪个联盟要散了，你总是第一个知道。你不制造新闻，你只是新闻的搬运工——一个非常高效的搬运工。",
+    emoji: "🍉"
+  },
+  "恋爱大师": {
+    tag: "社区 · 爱处CP",
+    desc: "在你眼里，无尽冬日就是一个大型恋爱模拟器。你热衷于撮合盟友、磕CP、制造浪漫氛围。你坚信：末日里最温暖的不是火炉，是爱情。",
+    emoji: "💕"
+  },
+  "战争贩子": {
+    tag: "社区 · 爱打架",
+    desc: "和平？不存在的。你上线就是为了打架，打完大的打小的，打完敌人打野怪。你的战争日志比别人的种田日志还长。全服都知道——惹谁都别惹你。",
+    emoji: "⚔️"
+  },
+  "屯屯鼠": {
+    tag: "社区 · 爱囤物资",
+    desc: "你的仓库永远是满的，你的安全感来自于那些堆成山的资源。别人问你为什么不用，你说「万一以后要用呢」。你是末日里最有准备的人。",
+    emoji: "🐿️"
+  },
+  "冬日陶渊明": {
+    tag: "社区 · 爱种田",
+    desc: "采菊东篱下，悠然见雪山。你在末日里开辟了一片世外桃源，种田、采集、升建筑，岁月静好与你同在。战争？什么战争？我的麦子熟了。",
+    emoji: "🌾"
+  },
+  "撒币大师": {
+    tag: "社区 · 爱撒钱",
+    desc: "你就是联盟里的财神爷，送资源、发红包、帮盟友升级，从不吝啬。大家都爱你，因为你用实际行动证明了：有钱，还大方，这就是顶级魅力。",
+    emoji: "💰"
+  },
+  "牛马": {
+    tag: "社区 · 爱肝",
+    desc: "你的在线时长是别人的三倍，日常任务从不遗漏，生产队列永远排满。别人在享受游戏，你在用生命诠释什么叫「勤劳致富」。牛马不是贬义，是一种生活态度。",
+    emoji: "🐂"
+  },
+  "冬日课代表": {
+    tag: "社区 · 爱发教程",
+    desc: "你写的攻略比官方Wiki还详细，你做的数据表比策划的还专业。你乐于分享，热爱教学，是萌新们的灯塔。你可能不是最强的，但你一定是最有用的。",
+    emoji: "📚"
+  },
+  "分身大师": {
+    tag: "社区 · 爱开小号",
+    desc: "你的小号比有些人的好友还多。侦察、屯资源、多线发展，你把多开玩成了一门艺术。别人只有一个家，你在每个服务器都有房产。",
+    emoji: "🎭"
+  },
+  "119调度员": {
+    tag: "社区 · 一被打就喊人",
+    desc: "你的求救信号覆盖全服，响应速度比119还快。虽然有时候喊来的人比敌人还多，但这不重要——重要的是，你从不独自承受。团结就是力量，这是你的核心信仰。",
+    emoji: "🚨"
+  },
+  "佛系玩家": {
+    tag: "角色 · 什么都与我无关",
+    desc: "你来无尽冬日不是为了争第一，而是为了内心的平静。被打了不生气，发育慢也不急，联盟吵架你旁观。你是冬日里最通透的人，已经提前悟道了。",
+    emoji: "🧘"
+  },
+  "吗喽": {
+    tag: "角色 · 怎样都开心",
+    desc: "你是游戏里的快乐源泉。赢了开心，输了也开心，有活动开心，没活动也开心。你用实际行动告诉所有人：游戏嘛，开心最重要。你的快乐，感染了整个联盟。",
+    emoji: "🐒"
+  },
+  "白嫖生存大师": {
+    tag: "角色 · 零氪玩家",
+    desc: "你是零氪界的天花板，免费资源一个不漏，付费内容绝不碰。你精打细算，把每一点免费资源的价值榨干。你证明了：不花钱，照样能在末日活得很好。",
+    emoji: "🆓"
+  },
+  "霸总": {
+    tag: "角色 · 车头",
+    desc: "你天生就是当领导的料。排兵布阵、外交谈判、资源调配，你把联盟管理得井井有条。你的联盟群消息永远是最多的，因为你永远有新的计划要部署。",
+    emoji: "👑"
+  },
+  "无尽印钞机": {
+    tag: "角色 · 金球",
+    desc: "你是服务器经济的重要支柱，你的氪金量足以让策划单独给你写一封感谢信。你追求最强，也享受变强的过程。毕竟，末日里最强的防线就是——钱。",
+    emoji: "💎"
+  },
+  "六边形战士": {
+    tag: "角色 · 技术玩家",
+    desc: "操作、意识、配置、数据分析，你样样精通。你是PVP场上的噩梦，PVE里的效率王。别人还在纠结选什么，你已经算出了最优解。你不是在玩游戏，你是在解题。",
+    emoji: "⬡"
+  },
+  "赛后诸葛亮": {
+    tag: "角色 · 技术不好但嘴硬",
+    desc: "你的实操或许不是顶尖，但你的复盘能力绝对一流。每场战斗结束后，你总能分析出「如果当时这样就赢了」。你不是打得不行，你是时机没到。下次一定。",
+    emoji: "🪭"
+  }
+};
+
+let current = 0;
+let scores = {};
+
+function startQuiz() {
+  current = 0;
+  scores = {};
+  showPage('page-quiz');
+  renderQuestion();
+}
+
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+function renderQuestion() {
+  const q = questions[current];
+  document.getElementById('qNum').textContent = `Q${current + 1}`;
+  document.getElementById('qText').textContent = q.q;
+  document.getElementById('progressText').textContent = `${current + 1} / ${questions.length}`;
+  document.getElementById('progressFill').style.width = `${((current) / questions.length) * 100}%`;
+
+  const optDiv = document.getElementById('qOptions');
+  optDiv.innerHTML = '';
+  // 随机打乱选项顺序
+  const shuffled = [...q.opts].sort(() => Math.random() - 0.5);
+  shuffled.forEach(opt => {
+    const el = document.createElement('div');
+    el.className = 'option';
+    el.textContent = opt.text;
+    el.onclick = () => selectOption(opt.type, el);
+    optDiv.appendChild(el);
+  });
+}
+
+function selectOption(type, el) {
+  // 防止重复点击
+  if (el.classList.contains('selected')) return;
+  document.querySelectorAll('.option').forEach(o => o.style.pointerEvents = 'none');
+  el.classList.add('selected');
+
+  scores[type] = (scores[type] || 0) + 1;
+
+  setTimeout(() => {
+    current++;
+    if (current < questions.length) {
+      renderQuestion();
+    } else {
+      showResult();
+    }
+  }, 400);
+}
+
+function showResult() {
+  document.getElementById('progressFill').style.width = '100%';
+
+  // 计算结果
+  const sorted = Object.entries(scores).sort((a, b) => b[1] - a[1]);
+  const top = sorted[0];
+  const topType = top[0];
+  const topCount = top[1];
+  const pct = Math.round((topCount / questions.length) * 100);
+
+  const profile = profiles[topType] || { tag: "未知", desc: "你是一个神秘的玩家。", emoji: "❓" };
+
+  document.getElementById('rTitle').textContent = `${profile.emoji} ${topType}`;
+  document.getElementById('rTag').textContent = profile.tag;
+  document.getElementById('rDesc').textContent = profile.desc;
+
+  // 统计数字
+  document.getElementById('rStats').innerHTML = `
+    <div class="stat-item">
+      <div class="stat-value">${pct}%</div>
+      <div class="stat-label">匹配度</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-value">${topCount}/${questions.length}</div>
+      <div class="stat-label">命中题数</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-value">${sorted.length}</div>
+      <div class="stat-label">涉及人格</div>
+    </div>
+  `;
+
+  // 前5名柱状图
+  const barsHtml = ['<h4>你的人格分布 TOP 5</h4>'];
+  sorted.slice(0, 5).forEach(([name, count]) => {
+    const p = Math.round((count / questions.length) * 100);
+    barsHtml.push(`
+      <div class="bar-row">
+        <span class="bar-name">${name}</span>
+        <div class="bar-track"><div class="bar-value" style="width:${p}%"></div></div>
+        <span class="bar-pct">${p}%</span>
+      </div>
+    `);
+  });
+  document.getElementById('rBars').innerHTML = barsHtml.join('');
+
+  showPage('page-result');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function restart() {
+  showPage('page-home');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>
